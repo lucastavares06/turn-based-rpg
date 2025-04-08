@@ -1,3 +1,0 @@
-C:/Users/lucas/CLionProjects/turn_based_rpg/cmake-build-debug/CMakeFiles/turn_based_rpg.dir
-C:/Users/lucas/CLionProjects/turn_based_rpg/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/lucas/CLionProjects/turn_based_rpg/cmake-build-debug/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,12 @@
+.idea/
+
+cmake-build-debug/
+CMakeFiles/
+CMakeCache.txt
+*.obj
+*.exe
+*.ninja*
+*.log
+build/
+
+Testing/
