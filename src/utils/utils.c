@@ -11,6 +11,18 @@ void println(const char *message) {
     printf("%s\n", message);
 }
 
+int read_int() {
+    int value;
+    char trash;
+
+    if (scanf("%d%c", &value, &trash) != 2 || trash != '\n') {
+        println("Invalid entry!");
+        return -1;
+    }
+
+    return value;
+}
+
 char read_digit_char(void) {
     char input[10];
     if (fgets(input, sizeof(input), stdin)) {
