@@ -1,5 +1,5 @@
-#include "menu/menu.h"
+#include "game/game.h"
 
 int main(void) {
-    return run_game_menu();
+    return game_run();
 }
