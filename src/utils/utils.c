@@ -20,28 +20,30 @@ char read_digit_char(void) {
             len--;
         } else {
             int c;
-            while ((c = getchar()) != '\n' && c != EOF) {}
+            while ((c = getchar()) != '\n' && c != EOF) { }
         }
-        if (len == 1 && isdigit(input[0])) {
-            return input[0];
+        if (len == 1) {
+            const unsigned char ch = input[0];
+            if (isdigit(ch)) {
+                return input[0];
+            }
         }
     }
     return '\0';
 }
 
-bool read_string(char *buffer, int size) {
+int read_string(char *buffer, const int size) {
     if (buffer == NULL || size <= 0)
-        return false;
-
+        return 0;
     if (fgets(buffer, size, stdin)) {
         const size_t len = strlen(buffer);
         if (len > 0 && buffer[len - 1] == '\n')
             buffer[len - 1] = '\0';
         else {
             int c;
-            while ((c = getchar()) != '\n' && c != EOF) {}
+            while ((c = getchar()) != '\n' && c != EOF) { }
         }
-        return true;
+        return 1;
     }
-    return false;
+    return 0;
 }
