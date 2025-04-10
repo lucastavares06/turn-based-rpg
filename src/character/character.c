@@ -89,6 +89,7 @@ int create_monster(Character *character) {
     character->health = (float)random_number(50,100);
     character->attack = (float)random_number(10,20);
     character->defense = (float)random_number(5,15);
+    println("Monster created!");
     return 0;
 }
 
@@ -101,4 +102,8 @@ int show_character_info(Character *character) {
     printf("ATK: %.1f\n", character->attack);
     printf("DF: %.1f\n", character->defense);
     return 0;
+}
+
+float damage_calculator(const Character *attacker, const Character *defender) {
+    return attacker->attack - defender->defense;
 }

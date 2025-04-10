@@ -30,4 +30,6 @@ int show_character_info(Character *character);
 
 int show_character_class(Character *character);
 
+float damage_calculator(const Character *attacker, const Character *defender);
+
 #endif
