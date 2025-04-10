@@ -1,6 +1,29 @@
 #include <stddef.h>
 #include "character.h"
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "../utils/utils.h"
+
+int show_character_class(Character *character) {
+    switch (character->char_class) {
+        case CLASS_WARRIOR:
+            println("Warrior");
+        break;
+        case CLASS_MAGE:
+            println("Mage");
+        break;
+        case CLASS_ARCHER:
+            println("Archer");
+        break;
+        default:
+            println("Undefined class!");
+        break;
+    }
+    return 0;
+}
 
 static void setup_stats(Character *character) {
     switch (character->char_class) {
@@ -42,28 +65,40 @@ int create_character(Character *character) {
     println("  2. Mage");
     println("  3. Archer");
     print("Enter your class choice: ");
-    const char input = read_digit_char();
-    CharacterClass choice = input - '0';
+    const int input = read_int();
+
+    CharacterClass choice = input;
     if (choice < CLASS_WARRIOR || choice > CLASS_ARCHER) {
         println("Invalid class. Defaulting to Warrior.");
         choice = CLASS_WARRIOR;
     }
+
     character->char_class = choice;
     setup_stats(character);
     println("");
-    switch (character->char_class) {
-        case CLASS_WARRIOR:
-            println("You chose Warrior!");
-        break;
-        case CLASS_MAGE:
-            println("You chose Mage!");
-        break;
-        case CLASS_ARCHER:
-            println("You chose Archer!");
-        break;
-        default:
-            println("Undefined class!");
-        break;
+    print("Your chose ");
+    show_character_class(character);
+    print("!");
+    println("");
+    return 0;
+}
+
+int create_monster(Character *character) {
+    strcpy(character->name, "MONSTER");
+    character->char_class = NOT_DEFINED;
+    character->health = (float)random_number(50,100);
+    character->attack = (float)random_number(10,20);
+    character->defense = (float)random_number(5,15);
+    return 0;
+}
+
+int show_character_info(Character *character) {
+    printf("Nome: %s\n", character->name);
+    if (character->char_class != NOT_DEFINED) {
+        show_character_class(character);
     }
+    printf("PV: %.1f\n", character->health);
+    printf("ATK: %.1f\n", character->attack);
+    printf("DF: %.1f\n", character->defense);
     return 0;
 }

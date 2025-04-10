@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
+#include <stdlib.h>
 
 void print(const char *message) {
     printf("%s", message);
@@ -16,10 +17,20 @@ int read_int() {
     char trash;
 
     if (scanf("%d%c", &value, &trash) != 2 || trash != '\n') {
-        println("Invalid entry!");
-        return -1;
+        value = -1;
     }
+    clear_input_buffer();
+    return value;
+}
+int random_number(int min, int max) {
+    return min + (rand() % (max - min + 1));
+}
 
+char join_str(char first_value[], char second_value[]) {
+    char value[101];
+
+    strcat(value, first_value);
+    strcat(value, second_value);
     return value;
 }
 
@@ -58,4 +69,9 @@ int read_string(char *buffer, const int size) {
         return 1;
     }
     return 0;
+}
+
+void clear_input_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
 }
