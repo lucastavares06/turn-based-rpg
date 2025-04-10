@@ -6,7 +6,8 @@
 typedef enum {
     CLASS_WARRIOR = 1,
     CLASS_MAGE,
-    CLASS_ARCHER
+    CLASS_ARCHER,
+    NOT_DEFINED
 } CharacterClass;
 
 typedef struct {
@@ -18,5 +19,17 @@ typedef struct {
 } Character;
 
 int create_character(Character *character);
+
+int create_monster(Character *character);
+
+/**
+ * Show character information
+ * @param character
+ */
+int show_character_info(Character *character);
+
+int show_character_class(Character *character);
+
+float damage_calculator(const Character *attacker, const Character *defender);
 
 #endif
