@@ -26,12 +26,21 @@ int random_number(int min, int max) {
     return min + (rand() % (max - min + 1));
 }
 
-char join_str(char first_value[], char second_value[]) {
-    char value[101];
+char *join_str(const char *first_value, const char *second_value) {
+    if (!first_value || !second_value) return NULL;
 
-    strcat(value, first_value);
-    strcat(value, second_value);
-    return value;
+    const size_t len1 = strlen(first_value);
+    const size_t len2 = strlen(second_value);
+    const size_t total_len = len1 + len2 + 1;
+
+    char *result = malloc(total_len);
+    if (result == NULL) return NULL;
+
+    memcpy(result, first_value, len1);
+    memcpy(result + len1, second_value, len2);
+    result[total_len - 1] = '\0';
+
+    return result;
 }
 
 char read_digit_char(void) {
