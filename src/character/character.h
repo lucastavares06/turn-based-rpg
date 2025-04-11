@@ -1,13 +1,15 @@
 #ifndef CHARACTER_H
 #define CHARACTER_H
 
+#include <stdbool.h>
+
 #define MAX_NAME_LENGTH 50
 
 typedef enum {
     CLASS_WARRIOR = 1,
     CLASS_MAGE,
     CLASS_ARCHER,
-    NOT_DEFINED
+    CLASS_MONSTER
 } CharacterClass;
 
 typedef struct {
@@ -15,21 +17,20 @@ typedef struct {
     float health;
     float attack;
     float defense;
-    CharacterClass char_class;
+
+    float max_health;
+    float base_attack;
+    float base_defense;
+
+    CharacterClass class;
 } Character;
 
-int create_character(Character *character);
+void create_player_character(Character *character);
 
-int create_monster(Character *character);
+void create_monster_character(Character *character);
 
-/**
- * Show character information
- * @param character
- */
-int show_character_info(Character *character);
+bool show_character_info(const Character *character);
 
-int show_character_class(Character *character);
-
-float damage_calculator(const Character *attacker, const Character *defender);
+void reset_character_stats(Character *character);
 
 #endif
