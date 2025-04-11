@@ -1,30 +1,26 @@
 #ifndef UTILS_H
 #define UTILS_H
 
-void print(const char *message);
-void println(const char *message);
+#include <stdbool.h>
 
-/**
- * Waiting for user interaction \n
- * Returns the integer \n
- * Invalid input returns -1
- */
-int read_int();
-char read_digit_char(void);
-int read_string(char *buffer, int size);
+void print(char *message);
 
+void println(char *message);
 
-int random_number(int min, int max);
+int read_int(void);
 
-/**
- * Clear remaining buffer
- */
-void clear_input_buffer();
+bool read_string(char *buffer, int size);
 
-/**
- * Concatenate two chars \n
- * Max size of return is [100]
- */
-char join_str(char first_value[], char second_value[]);
+bool safe_copy_string(char *dest, const char *src, int max_size);
+
+char *join_str(char *first_value, char *second_value);
+
+float random_float(float min, float max);
+
+int random_int(int min, int max);
+
+void seed_random(void);
+
+void clear_input_buffer(void);
 
 #endif
